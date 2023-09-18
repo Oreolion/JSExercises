@@ -68,8 +68,21 @@ console.log(diceArray);
     return 'Number has a decimal place.';
    else
      return 'It is a whole number.';
-  }
+}
 
 console.log(number_test(25.66));
 
 console.log(number_test(10));
+
+
+// Javascript function for creating Components
+
+function mk(type, props, children) {
+    const el = document.createElement(type);
+    if (props) Object.assign(el, props);
+    if (children) el.append(...children);
+    return el;
+}
+
+console.log(mk("div"));
+  
