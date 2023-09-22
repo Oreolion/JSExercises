@@ -59,6 +59,11 @@ const diceArray = Array.from({ length: 100 }, () => randomDiceNum());
 
 console.log(diceArray);
 
+
+let num1To10 = Array.from({ length: 10 }, (each, index) => ++index);
+
+console.log(num1To10);
+
   
  // check if number has a decimal
  function number_test(n) {
