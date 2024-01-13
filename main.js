@@ -631,7 +631,63 @@ function disemvowel(str) {
 
 console.log(disemvowel("This website is for losers LOL!"));
 
-// Question 15: Subarray with Maximum Sum
+// Question 15: Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+//  method 1
+
+var findMedianSortedArrays = function (nums1, nums2) {
+  const mergedArr = [];
+  let i = 0,
+    j = 0;
+
+  while (nums1.length > i && nums2.length > j) {
+    if (nums1[i] < nums2[j]) {
+      mergedArr.push(nums1[i]);
+      i++;
+    } else {
+      mergedArr.push(nums2[j]);
+      j++;
+    }
+  }
+
+  if (nums1.length > i) {
+    mergedArr.push(...nums1.slice(i));
+  }
+  if (nums2.length > j) {
+    mergedArr.push(...nums2.slice(j));
+  }
+
+  const isEven = mergedArr.length % 2 == 0;
+  let midIndex = isEven
+    ? mergedArr.length / 2 - 1
+    : Math.floor(mergedArr.length / 2);
+
+  if (isEven) {
+    return ((mergedArr[midIndex] + mergedArr[midIndex + 1]) / 2).toFixed(5);
+  }
+
+  return mergedArr[midIndex].toFixed(5);
+};
+
+console.log(findMedianSortedArrays([1, 3], [2, 7]));
+console.log(findMedianSortedArrays([1, 2, 3], [1, 2, 3]));
+console.log(findMedianSortedArrays([1, 3], [2]));
+console.log(findMedianSortedArrays([1, 2], [3, 4]));
+
+// method 2
+
+function median(a, b) {
+  const c = a.concat(b).sort((a, b) => a - b);
+  const d = c.reduce((a, b) => a + b / c.length, 0);
+  let med = parseFloat(+d.toFixed(5));
+  return med;
+}
+
+console.log(median([1, 2, 3], [1, 2, 3]));
+console.log(median([1, 3], [2]));
+console.log(median([1, 2], [3, 4]));
+
+// Question 16: Subarray with Maximum Sum
 // Write a function that takes an array of numbers and finds the contiguous subarray (subsequence) with the largest sum.
 // For example, if the input array is [-2, 1, -3, 4, -1, 2, 1, -5, 4], the function should return 6, which corresponds to the subarray [4, -1, 2, 1].
 
@@ -703,16 +759,16 @@ console.log(disemvowel("This website is for losers LOL!"));
 // console.log(nb_year(1000, 0.02, 50, 1200));
 // console.log(nb_year(1500, 5, 100, 5000));
 
-let myName = "DEV REMY";
-document.title = prompt("who is this?", myName);
-document.body.style = "background-color:green;";
-let header = document.createElement("h1");
-let next = document.createElement("div");
-header.textContent = "HELLO WORLD";
-header.style = "color:orange";
-next.textContent = `THIS IS ${document.title}`;
-document.body.append(header, next);
-next.style =
-  "font-size:2rem;margin:10rem;padding:5rem;color:papayawhip;text-align:center;";
-next.style.border = "9px solid red";
-console.log(header);
+// let myName = "DEV REMY";
+// document.title = prompt("who is this?", myName);
+// document.body.style = "background-color:green;";
+// let header = document.createElement("h1");
+// let next = document.createElement("div");
+// header.textContent = "HELLO WORLD";
+// header.style = "color:orange";
+// next.textContent = `THIS IS ${document.title}`;
+// document.body.append(header, next);
+// next.style =
+//   "font-size:2rem;margin:10rem;padding:5rem;color:papayawhip;text-align:center;";
+// next.style.border = "9px solid red";
+// console.log(header);
